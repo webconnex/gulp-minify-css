@@ -30,8 +30,8 @@ describe('gulp-minify-css source map', function() {
   it('should generate source map with correct mapping', function(done) {
     var write = sourceMaps.write()
     .on('data', function(file) {
-      var mappings = file.sourceMap.mappings;
-      expect(mappings).to.be.equal('aAAA,EACE,kBCGE,WCJJ,WACE,wBACA,kBACA,gBACA');
+      var mapExpected = 'aAAA,EACE,WAAY,OCGV,MAAO,KCJX,WACE,YAAa,YACb,WAAY,OACZ,YAAa,IACb,IAAK,mBAAoB,kBAAmB,4FAA4F';
+      expect(file.sourceMap.mappings).to.be.equal(mapExpected);
 
       var sourcemapRegex = /sourceMappingURL=data:application\/json;base64/;
       expect(sourcemapRegex.test(String(file.contents))).to.be.equal(true);
