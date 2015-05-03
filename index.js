@@ -16,17 +16,28 @@ module.exports = function gulpMinifyCSS(options) {
     var run = new VinylBufferStream(function(buf, done) {
       var fileOptions = objectAssign({}, options);
 
-      // Image URLs are rebased with the assumption that they are relative to the
-      // CSS file they appear in (unless "relativeTo" option is explicitly set by
-      // caller)
-      fileOptions.relativeTo = options.relativeTo || path.resolve(path.dirname(file.path));
-
       // Enable sourcemap support if initialized file comes in.
       if (file.sourceMap) {
         fileOptions.sourceMap = JSON.stringify(file.sourceMap);
       }
 
-      new CleanCSS(fileOptions).minify(String(buf), function(errors, css) {
+      var cssFile;
+
+      if (file.path) {
+        // Image URLs are rebased with the assumption that they are relative to the
+        // CSS file they appear in (unless "relativeTo" option is explicitly set by
+        // caller)
+        fileOptions.relativeTo = options.relativeTo || path.resolve(path.dirname(file.path));
+
+        fileOptions.target = options.target || path.dirname(file.path);
+
+        cssFile = {};
+        cssFile[file.path] = {styles: buf.toString()};
+      } else {
+        cssFile = buf.toString();
+      }
+
+      new CleanCSS(fileOptions).minify(cssFile, function(errors, css) {
         if (errors) {
           done(errors.join(' '));
           return;
@@ -40,7 +51,7 @@ module.exports = function gulpMinifyCSS(options) {
               return src;
             }
 
-            return path.relative(file.base, src === '$stdin' ? file.path : src);
+            return path.relative(file.base, src);
           });
 
           applySourceMap(file, map);

@@ -1,7 +1,9 @@
 'use strict';
 
-var bufferstream = require('simple-bufferstream');
 var EOL = require('os').EOL;
+var path = require('path');
+
+var bufferstream = require('simple-bufferstream');
 var expect = require('chai').expect;
 var PluginError = require('gulp-util').PluginError;
 var minifyCSS = require('../');
@@ -65,11 +67,11 @@ describe('gulp-minify-css minification', function() {
       minifyCSS()
       .on('error', function(err) {
         expect(err).to.be.instanceOf(PluginError);
-        expect(err.fileName).to.be.equal('foo.css');
+        expect(err.fileName).to.be.equal(path.join(__dirname, '../foo.css'));
         done();
       })
       .end(new File({
-        path: 'foo.css',
+        path: path.join(__dirname, '../foo.css'),
         contents: new Buffer('@import url("../../external.css");')
       }));
     });
@@ -93,11 +95,11 @@ describe('gulp-minify-css minification', function() {
       minifyCSS()
       .on('error', function(err) {
         expect(err).to.be.instanceOf(PluginError);
-        expect(err.fileName).to.be.equal('foo.css');
+        expect(err.fileName).to.be.equal(path.join(__dirname, '../foo.css'));
         done();
       })
       .end(new File({
-        path: 'foo.css',
+        path: path.join(__dirname, '../foo.css'),
         contents: bufferstream(new Buffer('@import url("../../external.css");'))
       }));
     });
@@ -112,8 +114,8 @@ describe('gulp-minify-css minification', function() {
         done();
       })
       .end(new File({
-        path: 'test/fixtures/foo/bar/importer.css',
-        contents: new Buffer('@import url("../../external.css");')
+        path: path.join(__dirname, 'fixtures/foo////////../importer.css'),
+        contents: new Buffer('@import url("external.css");')
       }));
     });
   });
