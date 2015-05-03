@@ -16,20 +16,21 @@ module.exports = function gulpMinifyCSS(options) {
     var run = new VinylBufferStream(function(buf, done) {
       var fileOptions = objectAssign({}, options);
 
-      // Enable sourcemap support if initialized file comes in.
-      if (file.sourceMap) {
+      if ((options.sourceMap === true || options.sourceMap === undefined) && file.sourceMap) {
         fileOptions.sourceMap = JSON.stringify(file.sourceMap);
       }
 
       var cssFile;
 
       if (file.path) {
+        var dirName = path.dirname(file.path);
+
         // Image URLs are rebased with the assumption that they are relative to the
         // CSS file they appear in (unless "relativeTo" option is explicitly set by
         // caller)
-        fileOptions.relativeTo = options.relativeTo || path.resolve(path.dirname(file.path));
+        fileOptions.relativeTo = options.relativeTo || path.resolve(dirName);
 
-        fileOptions.target = options.target || path.dirname(file.path);
+        fileOptions.target = options.target || dirName;
 
         cssFile = {};
         cssFile[file.path] = {styles: buf.toString()};
@@ -43,7 +44,7 @@ module.exports = function gulpMinifyCSS(options) {
           return;
         }
 
-        if (css.sourceMap && file.sourceMap) {
+        if (css.sourceMap) {
           var map = JSON.parse(css.sourceMap);
           map.file = path.relative(file.base, file.path);
           map.sources = map.sources.map(function(src) {
