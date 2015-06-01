@@ -1,6 +1,22 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+
+## [1.1.4] - 2015-06-02
+
+- index.js
+  * Remove the file-path workarounds since clean-css v3.3.0 treats paths correctly.
+
+## [1.1.3] - 2015-05-31
+
+This version is exactly the same as v1.1.2. See [the discussion about it](https://github.com/murphydanger/gulp-minify-css/commit/a0357378a80845353b496a6f347040b8afbba79b#commitcomment-11456375).
+
+## [1.1.2] - 2015-05-31
+
+### Changed
+
+- Reflect the update of the repository owner name.
 
 ## [1.1.1] - 2015-05-03
 
