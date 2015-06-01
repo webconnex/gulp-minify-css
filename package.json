@@ -22,9 +22,9 @@
   ],
   "scripts": {
     "pretest": "eslint --config node_modules/@shinnn/eslintrc-node/rc.json --env mocha index.js test",
-    "test": "mocha",
-    "test-dot": "mocha --reporter dot",
-    "coverage": "istanbul cover _mocha",
+    "test": "_mocha --full-trace",
+    "test-dot": "_mocha --reporter dot --full-trace",
+    "coverage": "istanbul cover _mocha -- --full-trace",
     "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
   },
   "dependencies": {
