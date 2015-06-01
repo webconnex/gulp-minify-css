@@ -6,15 +6,13 @@ var path = require('path');
 var combine = require('stream-combiner2');
 var expect = require('chai').expect;
 var File = require('vinyl');
-var minifyCSS = require('../');
+var minifyCSS = require('..');
 var sourceMaps = require('gulp-sourcemaps');
 var stylus = require('gulp-stylus');
 
-require('mocha');
-
 var fixture = [
   '/*! header */',
-  '@import "external.css";',
+  '@import "fixture.css";',
   '@import url(http://fonts.googleapis.com/css?family=Open+Sans);',
   '',
   'p { color: aqua }'
@@ -22,7 +20,7 @@ var fixture = [
 
 var fixtureStylus = [
   '/*! Special Comment */',
-  '@import "external.css";',
+  '@import "fixture.css";',
   'p { color: gray; }'
 ].join('\n');
 
@@ -30,7 +28,7 @@ describe('gulp-minify-css source map', function() {
   it('should generate source map with correct mapping', function(done) {
     var write = sourceMaps.write()
     .on('data', function(file) {
-      var mapExpected = 'aAAA,EACE,WAAY,OCGV,MAAO,KCJX,WACE,YAAa,YACb,WAAY,OACZ,YAAa,IACb,IAAK,mBAAoB,kBAAmB,4FAA4F';
+      var mapExpected = 'aAAA,EACE,WAAY,OCGV,MAAO,KCJX,WACE,YAAa,YACb,WAAY,OACZ,YAAa,IACb,IAAK,mBAAoB,kBAAmB,6FAA4F';
       expect(file.sourceMap.mappings).to.be.equal(mapExpected);
 
       var sourcemapRegex = /sourceMappingURL=data:application\/json;base64/;
@@ -40,7 +38,7 @@ describe('gulp-minify-css source map', function() {
       expect(file.sourceMap.file).to.be.equal('sourcemap.css');
 
       expect(file.sourceMap.sources).to.be.deep.equal([
-        'external.css',
+        'fixture.css',
         'sourcemap.css',
         'http://fonts.googleapis.com/css?family=Open+Sans'
       ]);
@@ -54,8 +52,8 @@ describe('gulp-minify-css source map', function() {
     )
     .on('error', done)
     .end(new File({
-      base: path.join(__dirname, 'fixtures'),
-      path: path.join(__dirname, './fixtures/sourcemap.css'),
+      base: path.join(__dirname),
+      path: path.join(__dirname, 'sourcemap.css'),
       contents: new Buffer(fixture)
     }));
   });
@@ -64,7 +62,7 @@ describe('gulp-minify-css source map', function() {
     var write = sourceMaps.write()
     .on('data', function(file) {
       expect(file.sourceMap.sources).to.be.deep.equal([
-        'external.css',
+        'fixture.css',
         'importer.css'
       ]);
       done();
@@ -78,8 +76,8 @@ describe('gulp-minify-css source map', function() {
     )
     .on('error', done)
     .end(new File({
-      base: path.join(__dirname, 'fixtures'),
-      path: path.join(__dirname, 'fixtures/importer.css'),
+      base: path.join(__dirname),
+      path: path.join(__dirname, 'importer.css'),
       contents: new Buffer(fixtureStylus)
     }));
   });
@@ -88,8 +86,8 @@ describe('gulp-minify-css source map', function() {
     var write = sourceMaps.write()
     .on('data', function(file) {
       expect(file.sourceMap.sources).to.be.deep.equal([
-        'test/fixtures/external.css',
-        'test/fixtures/importer.css'
+        'test/fixture.css',
+        'test/importer.css'
       ]);
       done();
     });
@@ -103,7 +101,7 @@ describe('gulp-minify-css source map', function() {
     .on('error', done)
     .end(new File({
       base: '.',
-      path: path.join(__dirname, 'fixtures/importer.css'),
+      path: path.join(__dirname, 'importer.css'),
       contents: new Buffer(fixtureStylus)
     }));
   });
