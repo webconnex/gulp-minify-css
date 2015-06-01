@@ -23,15 +23,6 @@ module.exports = function gulpMinifyCSS(options) {
       var cssFile;
 
       if (file.path) {
-        var dirName = path.dirname(file.path);
-
-        // Image URLs are rebased with the assumption that they are relative to the
-        // CSS file they appear in (unless "relativeTo" option is explicitly set by
-        // caller)
-        fileOptions.relativeTo = options.relativeTo || path.resolve(dirName);
-
-        fileOptions.target = options.target || dirName;
-
         cssFile = {};
         cssFile[file.path] = {styles: buf.toString()};
       } else {

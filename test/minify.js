@@ -58,7 +58,7 @@ describe('gulp-minify-css minification', function() {
       })
       .end(new File({
         path: path.join(__dirname, '../foo.css'),
-        contents: new Buffer('@import url("../../external.css");')
+        contents: new Buffer('@import url("../bar/../baz/../../external.css");')
       }));
     });
   });
@@ -101,7 +101,7 @@ describe('gulp-minify-css minification', function() {
       })
       .end(new File({
         path: path.join(__dirname, 'foo////////../importer.css'),
-        contents: new Buffer('@import url("fixture.css");')
+        contents: new Buffer('@import "fixture.css";')
       }));
     });
   });
