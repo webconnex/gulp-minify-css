@@ -25,6 +25,8 @@ var fixtureStylus = [
 ].join('\n');
 
 describe('gulp-minify-css source map', function() {
+  this.timeout(7500);
+
   it('should generate source map with correct mapping', function(done) {
     var write = sourceMaps.write()
     .on('data', function(file) {
