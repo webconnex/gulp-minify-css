@@ -14,7 +14,12 @@ module.exports = function gulpMinifyCSS(options) {
 
   return through2.obj(function modifyContents(file, enc, cb) {
     var run = new VinylBufferStream(function(buf, done) {
-      var fileOptions = objectAssign({}, options);
+      var fileOptions = objectAssign({target: file.path}, options);
+
+      // https://github.com/jakubpawlowicz/clean-css/blob/v3.3.0/bin/cleancss#L83-L84
+      if (fileOptions.relativeTo === undefined && (fileOptions.root || file.path)) {
+        fileOptions.relativeTo = path.dirname(path.resolve(options.root || file.path));
+      }
 
       if ((options.sourceMap === true || options.sourceMap === undefined) && file.sourceMap) {
         fileOptions.sourceMap = JSON.stringify(file.sourceMap);

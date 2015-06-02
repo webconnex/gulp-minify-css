@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.5] - 2015-06-03
+
+- index.js
+  * Fix the relative path problem ([#105](https://github.com/murphydanger/gulp-minify-css/issues/105)) by reproducing the `cleancss` CLI behavior faithfully.
+
 ## [1.1.4] - 2015-06-02
 
 - index.js

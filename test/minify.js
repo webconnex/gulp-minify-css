@@ -70,11 +70,14 @@ describe('gulp-minify-css minification', function() {
       .on('data', function(file) {
         file.contents.on('data', function(data) {
           expect(file.isStream()).to.be.equal(true);
-          expect(String(data)).to.be.equal('p:hover{font-size:0}');
+          expect(String(data)).to.be.equal('@font-face{src:local("baz"),url(1/2/3/font.eot)}');
           done();
         });
       })
-      .end(new File({contents: stringToStream('p:hover { font-size: 0 }')}));
+      .end(new File({
+        path: path.join(__dirname, 'foo/bar.css'),
+        contents: stringToStream('@font-face { src: local("baz"), url("1/2/3/font.eot"); }')
+      }));
     });
 
     it('should emit an error when the CSS is corrupt', function(done) {
