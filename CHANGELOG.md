@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.1.6] - 2015-06-04
+
+- dependency
+  * Bump [object-assign](https://github.com/sindresorhus/object-assign) to v3.0.0
+
 ## [1.1.5] - 2015-06-03
 
 - index.js

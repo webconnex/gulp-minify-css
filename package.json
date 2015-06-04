@@ -28,16 +28,16 @@
     "coveralls": "${npm_package_scripts_coverage} && istanbul-coveralls"
   },
   "dependencies": {
-    "clean-css": "^3.3.0",
+    "clean-css": "^3.3.1",
     "gulp-util": "^3.0.5",
-    "object-assign": "^2.0.0",
+    "object-assign": "^3.0.0",
     "through2": "^0.6.5",
     "vinyl-bufferstream": "^1.0.1",
     "vinyl-sourcemaps-apply": "^0.1.4"
   },
   "devDependencies": {
     "@shinnn/eslintrc-node": "^1.0.2",
-    "chai": "^2.3.0",
+    "chai": "^3.0.0",
     "eslint": "^0.22.1",
     "from2-string": "^1.0.2",
     "gulp-sourcemaps": "^1.5.2",
@@ -46,6 +46,6 @@
     "istanbul-coveralls": "^1.0.2",
     "mocha": "^2.2.4",
     "stream-combiner2": "^1.0.2",
-    "vinyl": "^0.4.6"
+    "vinyl": "^0.5.0"
   }
 }
