@@ -29,7 +29,7 @@ var minifyCss = require('gulp-minify-css');
 *options*: `Object`  
 Return: `Object` ([stream.Tansform](https://nodejs.org/docs/latest/api/stream.html#stream_class_stream_transform))
 
-Options are directly passed to [clean-css](https://github.com/jakubpawlowicz/clean-css#how-to-use-clean-css-programmatically) so all clean-css options are available.
+Options are directly passed to the [`CleanCSS` constructor](https://github.com/jakubpawlowicz/clean-css#how-to-use-clean-css-programmatically) so all the clean-css options are available.
 
 ```javascript
 var gulp = require('gulp');
@@ -60,27 +60,6 @@ gulp.task('minify-css', function() {
 
 ## LICENSE
 
-(MIT License)
-
-Copyright (c) 2015 Jonathan Pollack, [Terminal.com](https://www.terminal.com)
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+[MIT](./LICENSE) © [Jonathan Pollack](https://github.com/murphydanger)
 
 [clean-css]: https://github.com/jakubpawlowicz/clean-css
