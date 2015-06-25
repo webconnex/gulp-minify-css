@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.2.0] - 2015-06-14
+## [1.2.0] - 2015-06-25
 
 - dependency
   * Use [readable-stream](https://github.com/nodejs/readable-stream) instead of [through2](https://github.com/rvagg/through2)
