@@ -1,8 +1,11 @@
 # gulp-minify-css
 
+[![NPM version](http://img.shields.io/npm/v/gulp-minify-css.svg)](https://www.npmjs.com/package/gulp-minify-css)
 [![Build Status](https://travis-ci.org/murphydanger/gulp-minify-css.svg?branch=master)](https://travis-ci.org/murphydanger/gulp-minify-css)
 [![Build status](https://ci.appveyor.com/api/projects/status/eidg7ju694an2i74?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/gulp-minify-css)
 [![Coverage Status](https://img.shields.io/coveralls/murphydanger/gulp-minify-css.svg)](https://coveralls.io/r/murphydanger/gulp-minify-css)
+[![Dependency Status](https://img.shields.io/david/murphydanger/gulp-minify-css.svg?label=deps)](https://david-dm.org/lmtm/gulp-front-matter)
+[![devDependency Status](https://img.shields.io/david/dev/murphydanger/gulp-minify-css.svg?label=devDeps)](https://david-dm.org/lmtm/gulp-front-matter#info=devDependencies)
 
 [gulp](http://gulpjs.com/) plugin to minify CSS, using [clean-css] 
 
