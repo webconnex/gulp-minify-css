@@ -1,7 +1,7 @@
 {
   "name": "gulp-minify-css",
   "description": "Minify css with clean-css.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "repository": "murphydanger/gulp-minify-css",
   "author": "Jonathan Pollack <jonathan@gnobel.com> (gnobel.com)",
   "contributors": [
